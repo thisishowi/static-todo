@@ -14,9 +14,19 @@ class SingleTodo {
     this.task_head.classList.add(this.data.status);
     this.task_title.value = this.data.title;
 
-    this.marker.addEventListener("click", changeStatus.bind(this));
-    this.marker.addEventListener("touchend", changeStatus.bind(this));
-    function changeStatus() {
+    this.marker.addEventListener("touchstart", (e) => {
+      this.touchX = e.changedTouches[0].screenX;
+      this.touchY = e.changedTouches[0].screenY;
+    });
+    this.marker.addEventListener("touchend", (e) => {
+      e.preventDefault();
+      if (
+        this.touchX == e.changedTouches[0].screenX &&
+        this.touchY == e.changedTouches[0].screenY
+      )
+        this.marker.click();
+    });
+    this.marker.addEventListener("click", () => {
       switch (this.data.status) {
         case "waiting":
           this.data.status = "doing";
@@ -33,7 +43,7 @@ class SingleTodo {
       }
       this.marker.innerHTML = statusIcon[this.data.status];
       saveToDB();
-    }
+    });
     this.task_title.addEventListener("change", () => {
       this.data.title = this.task_title.value;
       saveToDB();
@@ -43,8 +53,8 @@ class SingleTodo {
       else this.addTask();
     });
     this.button_add.addEventListener("long-press", (e) => {
+      e.preventDefault();
       if (this.data.status === "done") {
-        e.preventDefault();
         this.addTask();
       } else this.deleteTask();
     });
