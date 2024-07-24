@@ -40,8 +40,11 @@ class SingleTodo {
       if (this.data.status === "done") this.deleteTask();
       else this.addTask();
     });
-    this.button_add.addEventListener("long-press", () => {
-      this.deleteTask();
+    this.button_add.addEventListener("long-press", (e) => {
+      if (this.data.status === "done") {
+        e.preventDefault();
+        this.addTask();
+      } else this.deleteTask();
     });
 
     this.data.children = this.data.children.map((child) =>
