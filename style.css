@@ -166,6 +166,7 @@ input {
 
 button {
   cursor: pointer;
+  -webkit-user-select: none;
   user-select: none;
 
   &:has(.material-icons-round) {
