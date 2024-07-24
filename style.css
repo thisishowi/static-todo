@@ -1,0 +1,173 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@100..900&family=Noto+Sans+JP:wght@100..900&display=swap");
+
+:root {
+  --container-width: 50rem;
+  --doing-angle: 0deg;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "montserrat", "Noto Sans JP", sans-serif;
+
+  &:not(dialog) {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+html {
+  font-size: 18px;
+}
+@media screen and (max-width: 500px) {
+  html {
+    font-size: 4vw;
+  }
+}
+
+body {
+  background-color: var(--gray-1);
+  color: var(--gray-12);
+  height: 100dvh;
+  overflow-x: hidden;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+  background-color: var(--gray-2);
+  box-shadow: 0 0 10rem 2.5rem var(--gray-2);
+
+  h1 {
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 2rem;
+  }
+  h2 {
+    padding-left: 0.7rem;
+    font-size: 1.4rem;
+  }
+}
+
+/*************
+    todo
+*************/
+.todos-container {
+  padding: 0.5rem;
+  width: 100%;
+
+  display: grid;
+  gap: 0.2rem;
+}
+
+.single-todo {
+  border-radius: 0.5rem;
+  padding: 0.1rem;
+  display: grid;
+  gap: 0.2rem;
+
+  &:hover {
+    background-color: var(--gray-3);
+  }
+
+  &.sortable-ghost {
+    background-color: var(--gray-8);
+  }
+}
+.nested-tasks {
+  border-radius: 0.5rem;
+  border: none;
+  display: grid;
+  gap: 0.2rem;
+  margin-left: 1.5rem;
+
+  .single-todo {
+    padding: 0rem;
+    border: none;
+  }
+
+  &:empty {
+    display: none;
+  }
+}
+.task-head {
+  display: flex;
+  align-items: center;
+
+  .list-marker,
+  .task-title,
+  .button_add {
+    border: 0.15rem solid transparent;
+    &:hover:not(:active) {
+      border-color: var(--gray-7);
+      transition: all 0.3s;
+    }
+    &:active {
+      border-color: var(--gray-11);
+    }
+  }
+  .task-title {
+    border-color: transparent;
+    &:not(:focus) {
+      color: var(--gray-12);
+    }
+    &:is(.doing &) {
+      background-color: var(--purple-12);
+      color: var(--gray-1);
+      font-weight: 500;
+      &::placeholder {
+        color: var(--gray-10);
+        font-weight: normal;
+      }
+    }
+    &:is(.done &) {
+      color: var(--gray-11);
+      text-decoration-line: line-through;
+      &::placeholder {
+        color: var(--gray-10);
+        font-weight: normal;
+      }
+    }
+  }
+  &.doing {
+    .list-marker > span {
+      transform: rotate(var(--doing-angle));
+    }
+  }
+  &.done {
+    .list-marker,
+    .button_add {
+      color: var(--pink-10);
+    }
+    .button_add > span {
+      transform: rotate(45deg) scale(1.25);
+      transition: 0.5s;
+    }
+  }
+}
+
+button:has(.material-icons-round) {
+  display: flex;
+  align-items: center;
+  user-select: none;
+}
+.div-add {
+  padding: 0 0.5rem 1rem 0;
+  display: flex;
+  justify-content: end;
+
+  .addNewTask {
+    border: 0.15rem solid transparent;
+    &:hover:not(:active) {
+      border-color: var(--gray-7);
+      transition: all 0.3s;
+    }
+    &:active {
+      border-color: var(--gray-11);
+    }
+  }
+}
+.material-icons-round {
+  font-size: 1.2rem;
+}

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo</title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons+Round"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="util/color.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container" data-long-press-delay="1000">
+      <h1>Todo</h1>
+
+      <template id="template_group">
+        <h2 class="group-title"></h2>
+        <div class="todos-container"></div>
+        <div class="div-add">
+          <button class="addNewTask">
+            Add new task&nbsp;<span class="material-icons-round">add</span>
+          </button>
+        </div>
+      </template>
+
+      <template id="template_todo">
+        <div class="single-todo">
+          <div class="task-head">
+            <button class="list-marker">
+              <span class="material-icons-round">radio_button_unchecked</span>
+            </button>
+            <input
+              class="task-title"
+              placeholder="title"
+              value="title"
+              spellcheck="false"
+            />
+            <button class="button_add">
+              <span class="material-icons-round">add</span>
+            </button>
+          </div>
+          <div class="nested-tasks"></div>
+        </div>
+      </template>
+      <!-- <dialog id="dialog_edit">
+        <form id="form_edit">
+          <div class="dialog-header">
+            <h2>Edit Todo</h2>
+            <button id="button_closeDialog">
+              <span class="material-icons-round">close</span>
+            </button>
+          </div>
+          <div class="dialog-body">
+            <p class="dialog-id">Id: <span id="span_dialog_id">...</span></p>
+            <label>
+              <p>Title</p>
+              <input placeholder="title" name="title" required />
+            </label>
+            <label>
+              <p>Content</p>
+              <input placeholder="content" name="content" required />
+            </label>
+          </div>
+          <div class="dialog-footer">
+            <button id="delete">delete</button>
+            <button id="save" type="submit">save</button>
+          </div>
+        </form>
+      </dialog> -->
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@latest/Sortable.min.js"></script>
+    <script src="util/long-press-event.min.js"></script>
+    <script src="util/css.js"></script>
+    <script src="classes/SingleTodo.js"></script>
+    <script src="classes/TaskGroup.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
