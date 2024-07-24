@@ -66,7 +66,6 @@ input {
     todo
 *************/
 .todos-container {
-  /* background-color: var(--gray-3); */
   padding: 0.5rem;
   width: 100%;
 
@@ -77,12 +76,10 @@ input {
 .single-todo {
   border-radius: 0.5rem;
   padding: 0.1rem;
-  /* border: 0.15rem solid transparent; */
   display: grid;
   gap: 0.2rem;
 
   &:hover {
-    /* border-color: var(--gray-6); */
     background-color: var(--gray-3);
   }
 
@@ -92,7 +89,6 @@ input {
 }
 .nested-tasks {
   border-radius: 0.5rem;
-  /* padding: 0.5rem; */
   border: none;
   display: grid;
   gap: 0.2rem;
@@ -110,7 +106,6 @@ input {
 .task-head {
   display: flex;
   align-items: center;
-  /* gap: 0rem; */
 
   .list-marker,
   .task-title,
@@ -194,5 +189,3 @@ button {
     }
   }
 }
-
-
