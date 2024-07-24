@@ -14,7 +14,9 @@ class SingleTodo {
     this.task_head.classList.add(this.data.status);
     this.task_title.value = this.data.title;
 
-    this.marker.addEventListener("click", () => {
+    this.marker.addEventListener("click", changeStatus.bind(this));
+    this.marker.addEventListener("touchend", changeStatus.bind(this));
+    function changeStatus() {
       switch (this.data.status) {
         case "waiting":
           this.data.status = "doing";
@@ -31,7 +33,7 @@ class SingleTodo {
       }
       this.marker.innerHTML = statusIcon[this.data.status];
       saveToDB();
-    });
+    }
     this.task_title.addEventListener("change", () => {
       this.data.title = this.task_title.value;
       saveToDB();
